@@ -1,14 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
+import WelcomePage from "./components/WelcomePage";
 
 //import UserContextProvider from './context/UserContext';
-//import WelcomePage from './components/WelcomePage';
-import SignUp from './components/SignUp';
-import Login from './components/Login';
 
 function App() {
+  // Default page as login
+  const [currentPage, setCurrentPage] = useState("login");
   return (
-   <div> <Login/></div>
+    <div>
+
+      {currentPage === "login" ? <Login /> : <SignUp />}
+    </div>
   );
 }
 
