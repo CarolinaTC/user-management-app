@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 function Login() {
     const navigate = useNavigate();
 
-
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
@@ -20,12 +19,14 @@ function Login() {
             body: JSON.stringify({ email: email, password: pass })
         };
         console.log(requestOptions);
+        console.log(localStorage.token);
         fetch('https://reqres.in/api/login', requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 localStorage.setItem('token', data.token);
-                console.log(localStorage)
-                navigate("/welcome");
+                if (localStorage.token != undefined && email != "" && pass != "") {
+                    navigate("/welcome");
+                }
                 console.log(data.token);
             });
         e.preventDefault();

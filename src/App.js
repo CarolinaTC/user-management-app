@@ -4,25 +4,22 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import WelcomePage from "./components/WelcomePage";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 
 function App() {
 
-  const [currentPage, setCurrentPage] = useState("");
   return (
     <div>
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="/welcome" element={<PrivateRoute><WelcomePage /></PrivateRoute>} />
           <Route path="/signup" element={<SignUp />} />
-
         </Routes>
       </Router>
-
-      {/*      {currentPage === "login" ? <Login /> : <SignUp />} */}
     </div>
   );
 }
