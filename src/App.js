@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
 
-      {currentPage === "login" ? <Login /> : <WelcomePage />}
+      {currentPage === "login" ? <Login /> : <SignUp />}
     </div>
   );
 }

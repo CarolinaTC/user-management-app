@@ -15,7 +15,6 @@ function WelcomePage() {
             <h1>Welcome Page</h1>
             {userData ? (
                 <div>
-                    <p>User ID: {userData.id}</p>
                     <p>Welcome {userData.first_name} </p>
 
                 </div>

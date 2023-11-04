@@ -15,13 +15,15 @@ function SignUp() {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, email: email, password: pass })
+            body: JSON.stringify({ email: email, password: pass })
         };
         console.log(requestOptions);
-        fetch('https://reqres.in/api/login', requestOptions)
+        fetch('https://reqres.in/api/register', requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 // TODO: Save token in the browser
+                localStorage.setItem('token', data.token);
+                console.log(localStorage)
                 // navigate("/welcome");
                 console.log(data.token);
             });
@@ -33,7 +35,7 @@ function SignUp() {
         <Container maxWidth="sm">
             <div>
                 <Typography variant="h4" align="center">
-                    Login
+                    Sign Up
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
@@ -76,7 +78,7 @@ function SignUp() {
                         fullWidth
                         style={{ marginTop: "20px" }}
                     >
-                        Login
+                        Sign Up
                     </Button>
                 </form>
                 <Typography variant="body2" align="center" style={{ marginTop: "20px" }}>
