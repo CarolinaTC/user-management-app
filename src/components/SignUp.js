@@ -10,6 +10,7 @@ function SignUp() {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         const requestOptions = {
@@ -21,10 +22,9 @@ function SignUp() {
         fetch('https://reqres.in/api/register', requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                // TODO: Save token in the browser
                 localStorage.setItem('token', data.token);
                 console.log(localStorage)
-                // navigate("/welcome");
+                navigate("/welcome");
                 console.log(data.token);
             });
         e.preventDefault();
@@ -43,7 +43,7 @@ function SignUp() {
                             <TextField
                                 fullWidth
                                 id="name"
-                                label="name"
+                                label="Name"
                                 variant="outlined"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
@@ -82,7 +82,7 @@ function SignUp() {
                     </Button>
                 </form>
                 <Typography variant="body2" align="center" style={{ marginTop: "20px" }}>
-                    If you already have an account, <a href="#">Login</a>
+                    If you already have an account, <a href="#" onClick={() => navigate("/login")}>Login</a>
                 </Typography>
             </div>
         </Container>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 function Login() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
 
     const [email, setEmail] = useState('');
@@ -23,10 +23,9 @@ function Login() {
         fetch('https://reqres.in/api/login', requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                // TODO: Save token in the browser
                 localStorage.setItem('token', data.token);
                 console.log(localStorage)
-                // navigate("/welcome");
+                navigate("/welcome");
                 console.log(data.token);
             });
         e.preventDefault();
@@ -75,7 +74,7 @@ function Login() {
                 </form>
                 <Typography variant="body2" align="center" style={{ marginTop: "20px" }}>
                     Don't have an account?{" "}
-                    <a href="#" >
+                    <a href="#" onClick={() => navigate("/signup")}>
                         Sign Up
                     </a>
                 </Typography>
