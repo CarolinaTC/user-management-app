@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+//import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
 function Login() {
+    // const navigate = useNavigate();
+
+
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
@@ -18,6 +24,8 @@ function Login() {
             .then((response) => response.json())
             .then((data) => {
                 // TODO: Save token in the browser
+                localStorage.setItem('token', data.token);
+                console.log(localStorage)
                 // navigate("/welcome");
                 console.log(data.token);
             });
@@ -26,18 +34,53 @@ function Login() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-
-                <TextField id="email" label="email" variant="standard" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" />
-
-                <TextField id="password" label="password" variant="standard" value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" />
-
-                <Button variant="contained" type="submit">Login</Button>
-
-            </form>
-            <Button> If you don't have an account,register here</Button>
-        </div>
+        <Container maxWidth="sm">
+            <div>
+                <Typography variant="h4" align="center">
+                    Login
+                </Typography>
+                <form onSubmit={handleSubmit}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <TextField
+                                fullWidth
+                                id="email"
+                                label="Email"
+                                variant="outlined"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                fullWidth
+                                id="password"
+                                label="Password"
+                                variant="outlined"
+                                type="password"
+                                value={pass}
+                                onChange={(e) => setPass(e.target.value)}
+                            />
+                        </Grid>
+                    </Grid>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        style={{ marginTop: "20px" }}
+                    >
+                        Login
+                    </Button>
+                </form>
+                <Typography variant="body2" align="center" style={{ marginTop: "20px" }}>
+                    Don't have an account?{" "}
+                    <a href="#" >
+                        Sign Up
+                    </a>
+                </Typography>
+            </div>
+        </Container>
     );
 }
 

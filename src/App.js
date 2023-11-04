@@ -8,11 +8,11 @@ import WelcomePage from "./components/WelcomePage";
 
 function App() {
   // Default page as login
-  const [currentPage, setCurrentPage] = useState("login");
+  const [currentPage, setCurrentPage] = useState("");
   return (
     <div>
 
-      {currentPage === "login" ? <Login /> : <SignUp />}
+      {currentPage === "login" ? <Login /> : <WelcomePage />}
     </div>
   );
 }
