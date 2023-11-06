@@ -30,11 +30,24 @@ function WelcomePage() {
 
     const [editingUserName, setEditingUserName] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const itemsPerPage = 5;
 
     const handlePageChange = (event, page) => {
+        console.log(page);
         setCurrentPage(page);
+        fetchUserPage(page);
     };
+
+    const fetchUserPage = (page) => {
+        fetch("https://reqres.in/api/users?page=" + page)
+            .then((response) => response.json())
+            .then((data) => {
+                setUserList(data.data);
+                setTotalPages(data.total_pages);
+            });
+
+    }
 
     // color theme
 
@@ -81,9 +94,7 @@ function WelcomePage() {
             .then((response) => response.json())
             .then((data) => setUserData(data.data));
 
-        fetch("https://reqres.in/api/users?page=1")
-            .then((response) => response.json())
-            .then((data) => setUserList(data.data));
+        fetchUserPage(1);
 
         console.log("userList" + userList);
     }, []);
@@ -208,7 +219,7 @@ function WelcomePage() {
                             </Table>
                         </TableContainer>
                         <Pagination
-                            count={Math.ceil(userList?.length / itemsPerPage)}
+                            count={totalPages}
                             page={currentPage}
                             onChange={handlePageChange}
                         />
