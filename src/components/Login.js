@@ -5,8 +5,30 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+
+
 
 function Login() {
+
+    const darkTheme = createTheme({
+        palette: {
+            mode: "dark",
+        },
+    });
+
+    const lightTheme = createTheme({
+        palette: {
+            mode: "light",
+        },
+    });
+    const [darkMode, setDarkMode] = useState(false);
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+        localStorage.setItem('darkMode', darkMode ? 'light' : 'dark');
+    };
+
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -34,53 +56,55 @@ function Login() {
     }
 
     return (
-        <Container maxWidth="sm">
-            <div>
-                <Typography variant="h4" align="center">
-                    Login
-                </Typography>
-                <form onSubmit={handleSubmit}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <TextField
-                                fullWidth
-                                id="email"
-                                label="Email"
-                                variant="outlined"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                fullWidth
-                                id="password"
-                                label="Password"
-                                variant="outlined"
-                                type="password"
-                                value={pass}
-                                onChange={(e) => setPass(e.target.value)}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        style={{ marginTop: "20px" }}
-                    >
+        <ThemeProvider theme={localStorage.getItem('darkMode') == "dark" ? darkTheme : lightTheme}>
+            <Container maxWidth="sm">
+                <div className={`${localStorage.getItem('darkMode') == "dark" ? "dark-mode" : "light-mode"}`}>
+                    <Typography variant="h4" align="center">
                         Login
-                    </Button>
-                </form>
-                <Typography variant="body2" align="center" style={{ marginTop: "20px" }}>
-                    Don't have an account?{" "}
-                    <a href="#" onClick={() => navigate("/signup")}>
-                        Sign Up
-                    </a>
-                </Typography>
-            </div>
-        </Container>
+                    </Typography>
+                    <form onSubmit={handleSubmit}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    fullWidth
+                                    id="email"
+                                    label="Email"
+                                    variant="outlined"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    fullWidth
+                                    id="password"
+                                    label="Password"
+                                    variant="outlined"
+                                    type="password"
+                                    value={pass}
+                                    onChange={(e) => setPass(e.target.value)}
+                                />
+                            </Grid>
+                        </Grid>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            fullWidth
+                            style={{ marginTop: "20px" }}
+                        >
+                            Login
+                        </Button>
+                    </form>
+                    <Typography variant="body2" align="center" style={{ marginTop: "20px" }}>
+                        Don't have an account?{" "}
+                        <a href="#" onClick={() => navigate("/signup")}>
+                            Sign Up
+                        </a>
+                    </Typography>
+                </div>
+            </Container>
+        </ThemeProvider>
     );
 }
 
