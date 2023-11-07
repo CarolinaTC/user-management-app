@@ -49,10 +49,10 @@ function Login() {
                 if (localStorage.token != undefined && email != "" && pass != "") {
                     navigate("/welcome");
                 }
-                console.log(data.token);
+                // console.log(data.token);
             });
         e.preventDefault();
-        console.log(email);
+
     }
 
     return (

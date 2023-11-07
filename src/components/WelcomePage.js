@@ -151,6 +151,7 @@ function WelcomePage() {
         fetch("https://reqres.in/api/users/", requestOptions).then(() =>
             setCreateUser(createUser)
         );
+        fetchUserPage(1);
         // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
     };
 
@@ -270,7 +271,7 @@ function WelcomePage() {
                     </Box>
                 </Modal>
                 {/* TODO Modal create user  */}
-                <Modal open={createUser == null} onClose={() => setCreateUser(createUser)}>
+                <Modal open={createUser != null} onClose={() => setCreateUser(createUser)}>
                     <Box sx={{ ...style, width: 200 }}>
                         <h2>Create New User</h2>
                         <TextField
