@@ -22,17 +22,20 @@ import MenuItem from '@mui/material/MenuItem';
 import Link from "@mui/material/Link";
 
 function WelcomePage() {
+
     const [userData, setUserData] = useState(null);
     const [userList, setUserList] = useState(null);
     const [editingUserId, setEditingUserId] = useState(null);
     const [deleteUserId, setDeleteUserId] = useState(null);
     const [deleteUserName, setDeleteUserName] = useState(null);
-
     const [editingUserName, setEditingUserName] = useState(null);
+    const [createUser, setCreateUser] = useState(null);
+    const [createUserName, setCreateUserName] = useState(null);
+    const [createUserEmail, setCreateUserEmail] = useState(null);
+
+    // Pagination
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const itemsPerPage = 5;
-
     const handlePageChange = (event, page) => {
         console.log(page);
         setCurrentPage(page);
@@ -49,8 +52,7 @@ function WelcomePage() {
 
     }
 
-    // color theme
-
+    // color theme selection
     const darkTheme = createTheme({
         palette: {
             mode: "dark",
@@ -95,8 +97,7 @@ function WelcomePage() {
             .then((data) => setUserData(data.data));
 
         fetchUserPage(1);
-
-        console.log("userList" + userList);
+        //console.log("userList" + userList);
     }, []);
 
     const handleLogout = () => {
@@ -140,6 +141,17 @@ function WelcomePage() {
         );
         // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
     };
+    // Create user name - check Api 
+    const handleCreateUser = (userId) => {
+        const requestOptions = {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+        };
+        fetch("https://reqres.in/api/users/" + userId, requestOptions).then(() =>
+            setDeleteUserId(null)
+        );
+        // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
+    };
 
     return (
         <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -156,7 +168,6 @@ function WelcomePage() {
                         <Link color="inherit" onClick={handleLogout}>
                             <ExitToApp /> Logout
                         </Link>
-
                     </MenuItem>
 
                 </div>
@@ -255,6 +266,33 @@ function WelcomePage() {
                         <p>Name: {deleteUserName}</p>
                         <Button onClick={() => setDeleteUserId(null)}>No</Button>
                         <Button onClick={() => handleDeleteUser(deleteUserId)}>Yes</Button>
+                    </Box>
+                </Modal>
+                {/* TODO Modal create user  */}
+                <Modal open={createUser != null} onClose={() => setCreateUser(null)}>
+                    <Box sx={{ ...style, width: 200 }}>
+                        <h2>Create New User</h2>
+                        <TextField
+                            fullWidth
+                            id="name"
+                            label="Name"
+                            variant="outlined"
+                            value={createUserName}
+                            defaultValue={createUserName}
+                            onChange={(e) => setCreateUserName(e.target.value)}
+                        />
+                        <TextField
+                            fullWidth
+                            id="email"
+                            label="email"
+                            variant="outlined"
+                            value={createUserEmail}
+                            defaultValue={createUserEmail}
+                            onChange={(e) => setCreateUserEmail(e.target.value)}
+                        />
+
+                        <Button onClick={() => setCreateUser(null)}>Cancel</Button>
+                        <Button onClick={() => handleCreateUser(createUser)}>Save</Button>
                     </Box>
                 </Modal>
             </div>
