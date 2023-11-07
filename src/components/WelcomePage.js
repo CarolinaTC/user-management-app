@@ -270,7 +270,7 @@ function WelcomePage() {
                     </Box>
                 </Modal>
                 {/* TODO Modal create user  */}
-                <Modal open={createUser != null} onClose={() => setCreateUser(null)}>
+                <Modal open={createUser == null} onClose={() => setCreateUser(createUser)}>
                     <Box sx={{ ...style, width: 200 }}>
                         <h2>Create New User</h2>
                         <TextField
@@ -284,8 +284,8 @@ function WelcomePage() {
                         />
                         <TextField
                             fullWidth
-                            id="email"
-                            label="email"
+                            id="job"
+                            label="job"
                             variant="outlined"
                             value={createUserJob}
                             defaultValue={createUserJob}
