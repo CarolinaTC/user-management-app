@@ -42,6 +42,7 @@ function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 fullWidth
+                                data-test="test_signup_name"
                                 id="name"
                                 label="Name"
                                 variant="outlined"
@@ -52,6 +53,7 @@ function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 fullWidth
+                                data-test="test_signup_email"
                                 id="email"
                                 label="Email"
                                 variant="outlined"
@@ -62,6 +64,7 @@ function SignUp() {
                         <Grid item xs={12}>
                             <TextField
                                 fullWidth
+                                data-test="test_signup_password"
                                 id="password"
                                 label="Password"
                                 variant="outlined"
@@ -72,6 +75,7 @@ function SignUp() {
                         </Grid>
                     </Grid>
                     <Button
+                        data-test="test_signup_button_submit"
                         type="submit"
                         variant="contained"
                         color="primary"

@@ -8,8 +8,8 @@ describe('Login Page', () => {
         const email = Cypress.env('email');
         const password = Cypress.env('password');
 
-        cy.get('#email').type(email);
-        cy.get('#password').type(password);
+        cy.get('[data-test = "test_login_email"]').type(email);
+        cy.get('[data-test = "test_login_password"]').type(password);
         cy.get('form').submit();
 
         cy.url().should('include', '/welcome');
@@ -19,4 +19,5 @@ describe('Login Page', () => {
         cy.contains('Sign Up').click();
         cy.url().should('include', '/signup');
     });
+
 });

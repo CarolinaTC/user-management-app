@@ -66,6 +66,7 @@ function Login() {
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
+                                    data-test="test_login_email"
                                     fullWidth
                                     id="email"
                                     label="Email"
@@ -76,6 +77,7 @@ function Login() {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    data-test="test_login_password"
                                     fullWidth
                                     id="password"
                                     label="Password"
@@ -87,6 +89,7 @@ function Login() {
                             </Grid>
                         </Grid>
                         <Button
+                            data-test="test_login_button_submit"
                             type="submit"
                             variant="contained"
                             color="primary"
