@@ -200,7 +200,7 @@ function WelcomePage() {
                             <Table>
                                 <TableHead>
 
-                                    <Button variant="outlined" onClick={() => setClickCreateModal(true)}>
+                                    <Button variant="outlined" onClick={() => setClickCreateModal(true)} data-test="test_button_create_user">
                                         <AddIcon color="primary" />
                                         Create New user
                                     </Button>
@@ -223,10 +223,12 @@ function WelcomePage() {
                                                 <EditIcon
                                                     color="primary"
                                                     onClick={() => handleEditUser(user.id)}
+                                                    data-test="test_button_edit_user"
                                                 />
                                                 <DeleteIcon
                                                     color="secondary"
                                                     onClick={() => handleOpenModelDeleteUser(user.id)}
+                                                    data-test="test_button_delete_user"
                                                 />
                                             </TableCell>
                                         </TableRow>
@@ -249,7 +251,7 @@ function WelcomePage() {
                     onClose={() => setEditingUserId(null)}
                 >
                     <Box sx={{ ...style, width: 200 }}>
-                        <h2>Edit User</h2>
+                        <Typography variant="h2" align="center" data-test="test_header_edit_user" >Edit User</Typography>
                         <TextField
                             fullWidth
                             id="name"
@@ -259,26 +261,26 @@ function WelcomePage() {
                             defaultValue={editingUserName}
                             onChange={(e) => setEditingUserName(e.target.value)}
                         />
-                        <Button onClick={() => setEditingUserId(null)}>Cancel</Button>
-                        <Button onClick={() => handleSaveUser(editingUserId)}>Save</Button>
+                        <Button onClick={() => setEditingUserId(null)} data-test="test_modal_cancel_edit_user">Cancel</Button>
+                        <Button onClick={() => handleSaveUser(editingUserId)} data-test="test_modal_save_edit_user">Save</Button>
                     </Box>
                 </Modal>
 
                 <Modal open={deleteUserId != null} onClose={() => setDeleteUserId(null)}>
                     <Box sx={{ ...style, width: 200 }}>
-                        <Typography variant="h4" align="center" class="m-b-10">Delete User</Typography>
+                        <Typography variant="h4" align="center" class="m-b-10" data-test="test_header_delete_user">Delete User</Typography>
                         <Typography variant="body1" align="left" class="m-b-10">Are you sure you want to delete the following user?</Typography>
                         <Typography variant="body1" align="left">ID: {deleteUserId}</Typography>
                         <Typography variant="body1" align="left">Name: {deleteUserName}</Typography>
 
-                        <Button onClick={() => setDeleteUserId(null)}>No</Button>
-                        <Button onClick={() => handleDeleteUser(deleteUserId)}>Yes</Button>
+                        <Button onClick={() => setDeleteUserId(null)} data-test="test_modal_delete_user_cancel">No</Button>
+                        <Button onClick={() => handleDeleteUser(deleteUserId)} data-test="test_modal_delete_user_confirm">Yes</Button>
                     </Box>
                 </Modal>
-                {/* TODO Modal create user  */}
+
                 <Modal open={clickCreateModal} onClose={() => setClickCreateModal(false)}>
                     <Box sx={{ ...style, width: 200 }}>
-                        <h2>Create New User</h2>
+                        <Typography variant="h2" align="center" data-test="test_header_create_user" >Create New User</Typography>
                         <TextField
                             fullWidth
                             id="name"
@@ -298,8 +300,8 @@ function WelcomePage() {
                             onChange={(e) => setCreateUserJob(e.target.value)}
                         />
 
-                        <Button onClick={() => setClickCreateModal(false)}>Cancel</Button>
-                        <Button onClick={() => handleCreateUser(createUser)}>Save</Button>
+                        <Button onClick={() => setClickCreateModal(false)} data-test="test_modal_create_user_cancel">Cancel</Button>
+                        <Button onClick={() => handleCreateUser(createUser)} data-test="test_modal_create_user_save">Save</Button>
                     </Box>
                 </Modal>
             </div>
