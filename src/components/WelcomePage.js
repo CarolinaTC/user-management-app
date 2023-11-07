@@ -32,6 +32,7 @@ function WelcomePage() {
     const [createUser, setCreateUser] = useState(null);
     const [createUserName, setCreateUserName] = useState(null);
     const [createUserJob, setCreateUserJob] = useState(null);
+    const [clickCreateModal, setClickCreateModal] = useState(false)
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1);
@@ -197,7 +198,7 @@ function WelcomePage() {
                             <Table>
                                 <TableHead>
 
-                                    <Button variant="outlined">
+                                    <Button variant="outlined" onClick={() => setClickCreateModal(true)}>
                                         <AddIcon color="primary" />
                                         Create New user
                                     </Button>
@@ -271,7 +272,7 @@ function WelcomePage() {
                     </Box>
                 </Modal>
                 {/* TODO Modal create user  */}
-                <Modal open={createUser != null} onClose={() => setCreateUser(createUser)}>
+                <Modal open={clickCreateModal} onClose={() => setClickCreateModal(false)}>
                     <Box sx={{ ...style, width: 200 }}>
                         <h2>Create New User</h2>
                         <TextField
@@ -293,7 +294,7 @@ function WelcomePage() {
                             onChange={(e) => setCreateUserJob(e.target.value)}
                         />
 
-                        <Button onClick={() => setCreateUser(null)}>Cancel</Button>
+                        <Button onClick={() => setClickCreateModal(false)}>Cancel</Button>
                         <Button onClick={() => handleCreateUser(createUser)}>Save</Button>
                     </Box>
                 </Modal>
