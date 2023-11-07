@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Box, CircularProgress, Modal, TextField, Switch } from "@mui/material";
 import { ExitToApp, Brightness4 } from "@mui/icons-material";
+import Typography from "@mui/material/Typography";
 import {
     Table,
     TableBody,
@@ -162,7 +163,7 @@ function WelcomePage() {
                 <div className="menu-container">
                     <MenuItem >
                         <Link color="inherit" onClick={toggleDarkMode}>
-                            <Brightness4 />     {darkMode ? "Light Mode" : "Dark Mode"}
+                            <Brightness4 />   {darkMode ? "Light Mode" : "Dark Mode"}
                         </Link>
 
                     </MenuItem>
@@ -188,7 +189,9 @@ function WelcomePage() {
                 >
                     Logout
                 </Button> */}
-                <h1>Welcome Page</h1>
+                <Typography variant="h4" align="center">
+                    Welcome Page
+                </Typography>
 
                 {userData ? (
                     <div className="welcome-content">
@@ -263,10 +266,11 @@ function WelcomePage() {
 
                 <Modal open={deleteUserId != null} onClose={() => setDeleteUserId(null)}>
                     <Box sx={{ ...style, width: 200 }}>
-                        <h2>Delete User</h2>
-                        <p>Are you sure you want to delete the following user?</p>
-                        <p>ID: {deleteUserId}</p>
-                        <p>Name: {deleteUserName}</p>
+                        <Typography variant="h4" align="center" class="m-b-10">Delete User</Typography>
+                        <Typography variant="body1" align="left" class="m-b-10">Are you sure you want to delete the following user?</Typography>
+                        <Typography variant="body1" align="left">ID: {deleteUserId}</Typography>
+                        <Typography variant="body1" align="left">Name: {deleteUserName}</Typography>
+
                         <Button onClick={() => setDeleteUserId(null)}>No</Button>
                         <Button onClick={() => handleDeleteUser(deleteUserId)}>Yes</Button>
                     </Box>
@@ -299,7 +303,7 @@ function WelcomePage() {
                     </Box>
                 </Modal>
             </div>
-        </ThemeProvider>
+        </ThemeProvider >
     );
 }
 
