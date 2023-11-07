@@ -34,3 +34,8 @@
     justify-content: flex-end;
     cursor: pointer;
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+}

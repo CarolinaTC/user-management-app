@@ -192,8 +192,7 @@ function WelcomePage() {
 
                 {userData ? (
                     <div className="welcome-content">
-                        <p>Welcome {userData.first_name}</p>
-
+                        {/*      <p>Welcome {userData.first_name}</p> */}
                         <TableContainer component={Paper}>
                             <Table>
                                 <TableHead>
@@ -236,6 +235,7 @@ function WelcomePage() {
                             count={totalPages}
                             page={currentPage}
                             onChange={handlePageChange}
+                            class="pagination-container"
                         />
                     </div>
                 ) : (
