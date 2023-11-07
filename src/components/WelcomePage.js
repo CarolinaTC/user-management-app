@@ -31,7 +31,7 @@ function WelcomePage() {
     const [editingUserName, setEditingUserName] = useState(null);
     const [createUser, setCreateUser] = useState(null);
     const [createUserName, setCreateUserName] = useState(null);
-    const [createUserEmail, setCreateUserEmail] = useState(null);
+    const [createUserJob, setCreateUserJob] = useState(null);
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1);
@@ -142,13 +142,14 @@ function WelcomePage() {
         // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
     };
     // Create user name - check Api 
-    const handleCreateUser = (userId) => {
+    const handleCreateUser = (createUser) => {
         const requestOptions = {
-            method: "DELETE",
+            method: "POST",
             headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: createUserName, job: createUserJob })
         };
-        fetch("https://reqres.in/api/users/" + userId, requestOptions).then(() =>
-            setDeleteUserId(null)
+        fetch("https://reqres.in/api/users/", requestOptions).then(() =>
+            setCreateUser(createUser)
         );
         // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
     };
@@ -286,9 +287,9 @@ function WelcomePage() {
                             id="email"
                             label="email"
                             variant="outlined"
-                            value={createUserEmail}
-                            defaultValue={createUserEmail}
-                            onChange={(e) => setCreateUserEmail(e.target.value)}
+                            value={createUserJob}
+                            defaultValue={createUserJob}
+                            onChange={(e) => setCreateUserJob(e.target.value)}
                         />
 
                         <Button onClick={() => setCreateUser(null)}>Cancel</Button>
