@@ -1,44 +1,50 @@
 .welcome-page-container {
-/*    display: flex;
+  /*    display: flex;
     justify-content: flex-end;
     align-items: flex-start;
     height: 100vh;  */
 }
 
 .welcome-content {
-/*    display: flex;
+  /*    display: flex;
     flex-direction: row;
     align-items: flex-start;  */
 }
 
 .logout-button {
-    cursor: pointer;
-
+  cursor: pointer;
 }
 /* Dark Mode */
 .dark-mode {
-    background-color: #333;
-    color: #fff;
+  background-color: #333;
+  color: #fff;
+}
+.dark-mode-modal {
+  color: #fff;
 }
 
 /* Light Mode */
 .light-mode {
-    background-color: #fff;
-    color: #333;
+  background-color: #fff;
+  color: #333;
+}
+
+.light-mode-modal {
+  color: #333;
 }
 
 .menu-container {
-    margin-top: 20px;
-    margin-right: 100px;
-    display: flex;
-    justify-content: flex-end;
-    cursor: pointer;
+  margin-top: 20px;
+  margin-right: 100px;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
 }
 
 .pagination-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .m-b-10 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }

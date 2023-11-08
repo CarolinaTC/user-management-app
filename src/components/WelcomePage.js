@@ -39,7 +39,6 @@ function WelcomePage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const handlePageChange = (event, page) => {
-        console.log(page);
         setCurrentPage(page);
         fetchUserPage(page);
     };
@@ -99,7 +98,7 @@ function WelcomePage() {
             .then((data) => setUserData(data.data));
 
         fetchUserPage(1);
-        //console.log("userList" + userList);
+
     }, []);
 
     const handleLogout = () => {
@@ -130,7 +129,7 @@ function WelcomePage() {
         fetch("https://reqres.in/api/users/" + userId, requestOptions).then(() =>
             setEditingUserId(null)
         );
-        // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
+        // Note: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
     };
 
     const handleDeleteUser = (userId) => {
@@ -141,9 +140,9 @@ function WelcomePage() {
         fetch("https://reqres.in/api/users/" + userId, requestOptions).then(() =>
             setDeleteUserId(null)
         );
-        // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
+        //Note: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
     };
-    // Create user name - check Api 
+
     const handleCreateUser = (createUser) => {
         const requestOptions = {
             method: "POST",
@@ -155,7 +154,7 @@ function WelcomePage() {
         );
         fetchUserPage(1);
         setClickCreateModal(false)
-        // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
+        // Note: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
     };
 
     return (
@@ -176,20 +175,7 @@ function WelcomePage() {
                     </MenuItem>
 
                 </div>
-                {/*      <Switch
-                    color="secondary"
-                    onClick={toggleDarkMode}
-                    className="toggle-button"
-                />
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    startIcon={<ExitToApp />}
-                    onClick={handleLogout}
-                    className="logout-button"
-                >
-                    Logout
-                </Button> */}
+
                 <Typography variant="h4" align="center">
                     Welcome Page
                 </Typography>
@@ -248,6 +234,7 @@ function WelcomePage() {
                     <CircularProgress />
                 )}
                 <Modal
+                    className={`${darkMode ? "dark-mode-modal" : "light-mode-modal"}`}
                     open={editingUserId != null}
                     onClose={() => setEditingUserId(null)}
                 >
@@ -267,9 +254,9 @@ function WelcomePage() {
                     </Box>
                 </Modal>
 
-                <Modal open={deleteUserId != null} onClose={() => setDeleteUserId(null)}>
+                <Modal className={`${darkMode ? "dark-mode-modal" : "light-mode-modal"}`} open={deleteUserId != null} onClose={() => setDeleteUserId(null)}>
                     <Box sx={{ ...style, width: 200 }}>
-                        <Typography variant="h4" align="center" class="m-b-10" data-test="test_header_delete_user">Delete User</Typography>
+                        <Typography variant="h3" align="center" class="m-b-10" data-test="test_header_delete_user">Delete User</Typography>
                         <Typography variant="body1" align="left" class="m-b-10">Are you sure you want to delete the following user?</Typography>
                         <Typography variant="body1" align="left">ID: {deleteUserId}</Typography>
                         <Typography variant="body1" align="left">Name: {deleteUserName}</Typography>
@@ -279,9 +266,9 @@ function WelcomePage() {
                     </Box>
                 </Modal>
 
-                <Modal open={clickCreateModal} onClose={() => setClickCreateModal(false)}>
+                <Modal className={`${darkMode ? "dark-mode-modal" : "light-mode-modal"}`} open={clickCreateModal} onClose={() => setClickCreateModal(false)}>
                     <Box sx={{ ...style, width: 200 }}>
-                        <Typography variant="h4" align="center" data-test="test_header_create_user" >Create New User</Typography>
+                        <Typography variant="h4" align="center" data-test="test_header_create_user" class="m-b-10">Create New User</Typography>
                         <TextField
                             fullWidth
                             id="name"
@@ -294,7 +281,7 @@ function WelcomePage() {
                         <TextField
                             fullWidth
                             id="job"
-                            label="job"
+                            label="Job"
                             variant="outlined"
                             value={createUserJob}
                             defaultValue={createUserJob}
