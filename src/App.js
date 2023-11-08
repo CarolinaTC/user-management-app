@@ -6,10 +6,6 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import WelcomePage from "./components/WelcomePage";
 import PrivateRoute from "./components/PrivateRoute";
-import { createTheme } from "@mui/material/styles";
-import { ThemeProvider } from "@mui/material/styles";
-
-
 
 function App() {
 
@@ -24,7 +20,6 @@ function App() {
         </Routes>
       </Router>
     </div>
-
 
   );
 }

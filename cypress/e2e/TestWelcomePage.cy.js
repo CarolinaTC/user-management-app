@@ -15,7 +15,7 @@ describe("Welcome Page", () => {
                   loggedIn = true;
               }
               cy.visit(Cypress.env('baseUrl') + '/welcome'); */
-    
+
     });
 
     it("should display the Welcome Page", () => {
@@ -31,8 +31,7 @@ describe("Welcome Page", () => {
                 cy.get('[data-test="test_header"]').should("have.class", "dark-mode");
             })
             .should(() => {
-                /*     cy.get('[data-test="test_toggle_theme"]')
-                        .contains("Light Mode").click(); */
+
             });
     });
 

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Box, CircularProgress, Modal, TextField } from "@mui/material";
+import { Breadcrumbs, Box, Button, CircularProgress, MenuItem, Modal, Link, TextField, Typography } from "@mui/material";
 import { ExitToApp, Brightness4 } from "@mui/icons-material";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import {
   Table,
@@ -18,11 +16,8 @@ import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Pagination from "@mui/material/Pagination";
-import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import "../util/welcomePage.css";
-import MenuItem from "@mui/material/MenuItem";
-import Link from "@mui/material/Link";
 import { createCustomTheme, toggleDarkMode } from "../theme/themeUtils";
 
 function WelcomePage() {
@@ -152,9 +147,8 @@ function WelcomePage() {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <div
         data-test="test_header"
-        className={`welcome-page-container ${
-          darkMode ? "dark-mode" : "light-mode"
-        }`}
+        className={`welcome-page-container ${darkMode ? "dark-mode" : "light-mode"
+          }`}
       >
         <div className="breadcrumbs-container">
           <Breadcrumbs maxItems={2} aria-label="breadcrumb">
