@@ -1,10 +1,21 @@
 import '../support/commands';
 // TODO: toggle dark / light mode
-// TODO: Pagination Component test
+let loggedIn = false;
 describe('Welcome Page', () => {
+    before(() => {
+        // Log in only once at the beginning of the test 
+        //cy.login();
+        //cy.visit(Cypress.env('baseUrl') + '/welcome');
+    });
     beforeEach(() => {
         cy.login()
         cy.visit(Cypress.env('baseUrl') + '/welcome');
+        /*   if (!loggedIn) {
+              cy.login();
+              loggedIn = true;
+          }
+          cy.visit(Cypress.env('baseUrl') + '/welcome'); */
+  
     });
 
     it('should display the Welcome Page', () => {
@@ -42,7 +53,12 @@ describe('Welcome Page', () => {
         cy.get('[data-test="test_header_create_user"]').should('not.exist');
 
     });
-
+    it('should load additional pages when clicking on the pagination buttons', () => {
+        cy.get('[data-test="test_table_id_0"]').contains("1")
+        // click on next page
+        cy.get(':nth-child(3) > .MuiButtonBase-root').click()
+        cy.get('[data-test="test_table_id_0"]').contains("7")
+    });
 
     it('should log out', () => {
         cy.contains('Logout').click();

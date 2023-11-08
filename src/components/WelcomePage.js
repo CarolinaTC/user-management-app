@@ -216,10 +216,10 @@ function WelcomePage() {
                                 <TableBody>
                                     {userList?.map((user, rowID) => (
                                         <TableRow key={rowID}>
-                                            <TableCell>{user.id}</TableCell>
-                                            <TableCell>{user.email}</TableCell>
-                                            <TableCell>{user.first_name}</TableCell>
-                                            <TableCell>{user.last_name}</TableCell>
+                                            <TableCell data-test={"test_table_id_" + rowID}>{user.id}</TableCell>
+                                            <TableCell data-test={"test_table_email_" + rowID}>{user.email}</TableCell>
+                                            <TableCell data-test={"test_table_first_name_" + rowID}>{user.first_name}</TableCell>
+                                            <TableCell data-test={"test_table_last_name_" + rowID}>{user.last_name}</TableCell>
                                             <TableCell>
                                                 <EditIcon
                                                     color="primary"
