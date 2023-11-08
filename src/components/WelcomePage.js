@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Box, CircularProgress, Modal, TextField, Switch } from "@mui/material";
 import { ExitToApp, Brightness4 } from "@mui/icons-material";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from "@mui/material/Typography";
+import HomeIcon from '@mui/icons-material/Home';
 import {
     Table,
     TableBody,
@@ -159,7 +161,28 @@ function WelcomePage() {
 
     return (
         <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+
             <div className={`welcome-page-container ${darkMode ? "dark-mode" : "light-mode"}`}>
+                <div className="breadcrumbs-container">
+                    <Breadcrumbs maxItems={2} aria-label="breadcrumb">
+                        <Link
+                            underline="hover"
+                            sx={{ display: 'flex', alignItems: 'center' }}
+                            color="inherit"
+                            href="/welcome"
+                        >
+                            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                            Home
+                        </Link>
+                    </Breadcrumbs>
+
+                    <div class="header">
+                        <Typography variant="h4" align="right">
+                            Welcome Page
+                        </Typography>
+                    </div>
+                </div>
+
                 <div className="menu-container">
                     <MenuItem >
                         <Link color="inherit" onClick={toggleDarkMode}>
@@ -176,9 +199,6 @@ function WelcomePage() {
 
                 </div>
 
-                <Typography variant="h4" align="center">
-                    Welcome Page
-                </Typography>
 
                 {userData ? (
                     <div className="welcome-content">

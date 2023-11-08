@@ -14,7 +14,7 @@ import { ThemeProvider } from "@mui/material/styles";
 function App() {
 
   return (
-    <div style={{ backgroundColor: "red" }} >
+    <div >
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
