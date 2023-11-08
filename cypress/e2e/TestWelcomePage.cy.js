@@ -1,5 +1,6 @@
 import '../support/commands';
-
+// TODO: toggle dark / light mode
+// TODO: Pagination Component test
 describe('Welcome Page', () => {
     beforeEach(() => {
         cy.login()
@@ -12,7 +13,7 @@ describe('Welcome Page', () => {
 
     it('should toggle dark/light mode', () => {
 
-        //
+
     });
 
 
@@ -32,14 +33,20 @@ describe('Welcome Page', () => {
         cy.get('[data-test="test_header_delete_user"]').should('not.exist');
     });
 
-    /*it('should create a new user', () => {
- 
+    it('should create a new user', () => {
+        cy.get('[data-test="test_button_create_user"]').click();
+        cy.get('[data-test="test_header_create_user"]').should('be.visible');
+        cy.get('input#name').type('John Doe');
+        cy.get('input#job').type('dev');
+        cy.get('[data-test="test_modal_create_user_save"]').click();
+        cy.get('[data-test="test_header_create_user"]').should('not.exist');
+
     });
- 
- 
+
+
     it('should log out', () => {
         cy.contains('Logout').click();
         cy.url().should('include', '/login');
         cy.contains('Login').should('be.visible');
-    }); */
+    });
 });

@@ -154,6 +154,7 @@ function WelcomePage() {
             setCreateUser(createUser)
         );
         fetchUserPage(1);
+        setClickCreateModal(false)
         // TODO: If this was a real call I would check for errors, but since this is allways successful I don't need to do it
     };
 
@@ -251,7 +252,7 @@ function WelcomePage() {
                     onClose={() => setEditingUserId(null)}
                 >
                     <Box sx={{ ...style, width: 200 }}>
-                        <Typography variant="h2" align="center" data-test="test_header_edit_user" >Edit User</Typography>
+                        <Typography variant="h4" align="center" data-test="test_header_edit_user" >Edit User</Typography>
                         <TextField
                             fullWidth
                             id="name"
@@ -280,7 +281,7 @@ function WelcomePage() {
 
                 <Modal open={clickCreateModal} onClose={() => setClickCreateModal(false)}>
                     <Box sx={{ ...style, width: 200 }}>
-                        <Typography variant="h2" align="center" data-test="test_header_create_user" >Create New User</Typography>
+                        <Typography variant="h4" align="center" data-test="test_header_create_user" >Create New User</Typography>
                         <TextField
                             fullWidth
                             id="name"
