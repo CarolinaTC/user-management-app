@@ -9,7 +9,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import MenuItem from '@mui/material/MenuItem';
 import Link from "@mui/material/Link";
 import { Brightness4 } from "@mui/icons-material";
-import "../util/login.css";
+import "../util/general.css";
 
 
 
@@ -61,7 +61,7 @@ function Login() {
 
     return (
         <ThemeProvider theme={localStorage.getItem('darkMode') == "dark" ? darkTheme : lightTheme}>
-            <div className={`login-container ${localStorage.getItem('darkMode') == "dark" ? "dark-mode" : "light-mode"}`}>
+            <div className={`container ${localStorage.getItem('darkMode') == "dark" ? "dark-mode" : "light-mode"}`}>
                 <Container maxWidth="sm">
                     <div className="menu-container">
                         <MenuItem>
