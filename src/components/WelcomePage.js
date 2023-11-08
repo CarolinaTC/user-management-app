@@ -240,7 +240,9 @@ function WelcomePage() {
                     onClose={() => setEditingUserId(null)}
                 >
                     <Box sx={{ ...style, width: 200 }}>
-                        <Typography variant="h4" align="center" data-test="test_header_edit_user" >Edit User</Typography>
+                        <div class="m-b-30">
+                            <Typography variant="h5" align="center" data-test="test_header_edit_user" >Edit User</Typography>
+                        </div>
                         <TextField
                             fullWidth
                             id="name"
@@ -250,47 +252,60 @@ function WelcomePage() {
                             defaultValue={editingUserName}
                             onChange={(e) => setEditingUserName(e.target.value)}
                         />
-                        <Button onClick={() => setEditingUserId(null)} data-test="test_modal_cancel_edit_user">Cancel</Button>
-                        <Button onClick={() => handleSaveUser(editingUserId)} data-test="test_modal_save_edit_user">Save</Button>
+                        <div class="m-t-30">
+                            <Button onClick={() => setEditingUserId(null)} data-test="test_modal_cancel_edit_user">Cancel</Button>
+                            <Button onClick={() => handleSaveUser(editingUserId)} data-test="test_modal_save_edit_user">Save</Button>
+                        </div>
                     </Box>
                 </Modal>
 
                 <Modal className={`${darkMode ? "dark-mode-modal" : "light-mode-modal"}`} open={deleteUserId != null} onClose={() => setDeleteUserId(null)}>
                     <Box sx={{ ...style, width: 200 }}>
-                        <Typography variant="h3" align="center" class="m-b-10" data-test="test_header_delete_user">Delete User</Typography>
-                        <Typography variant="body1" align="left" class="m-b-10">Are you sure you want to delete the following user?</Typography>
-                        <Typography variant="body1" align="left">ID: {deleteUserId}</Typography>
-                        <Typography variant="body1" align="left">Name: {deleteUserName}</Typography>
+                        <div class="m-b-10">  <Typography variant="h5" align="center" data-test="test_header_delete_user">Delete User</Typography></div>
 
-                        <Button onClick={() => setDeleteUserId(null)} data-test="test_modal_delete_user_cancel">No</Button>
-                        <Button onClick={() => handleDeleteUser(deleteUserId)} data-test="test_modal_delete_user_confirm">Yes</Button>
+                        <Typography variant="body1" align="left" >Are you sure you want to delete the following user?</Typography>
+                        <div class="m-t-30">
+                            <Typography variant="body1" align="left">ID: {deleteUserId}</Typography>
+                            <Typography variant="body1" align="left">Name: {deleteUserName}</Typography>
+                        </div>
+                        <div class="m-t-30">
+                            <Button onClick={() => setDeleteUserId(null)} data-test="test_modal_delete_user_cancel">No</Button>
+                            <Button onClick={() => handleDeleteUser(deleteUserId)} data-test="test_modal_delete_user_confirm">Yes</Button>
+                        </div>
                     </Box>
                 </Modal>
 
                 <Modal className={`${darkMode ? "dark-mode-modal" : "light-mode-modal"}`} open={clickCreateModal} onClose={() => setClickCreateModal(false)}>
                     <Box sx={{ ...style, width: 200 }}>
-                        <Typography variant="h4" align="center" data-test="test_header_create_user" class="m-b-10">Create New User</Typography>
-                        <TextField
-                            fullWidth
-                            id="name"
-                            label="Name"
-                            variant="outlined"
-                            value={createUserName}
-                            defaultValue={createUserName}
-                            onChange={(e) => setCreateUserName(e.target.value)}
-                        />
-                        <TextField
-                            fullWidth
-                            id="job"
-                            label="Job"
-                            variant="outlined"
-                            value={createUserJob}
-                            defaultValue={createUserJob}
-                            onChange={(e) => setCreateUserJob(e.target.value)}
-                        />
-
-                        <Button onClick={() => setClickCreateModal(false)} data-test="test_modal_create_user_cancel">Cancel</Button>
-                        <Button onClick={() => handleCreateUser(createUser)} data-test="test_modal_create_user_save">Save</Button>
+                        <div class="m-b-10">
+                            <Typography variant="h5" align="center" data-test="test_header_create_user" >Create New User</Typography></div>
+                        <div class="m-t-30">
+                            <div class="m-b-30">
+                                <TextField
+                                    fullWidth
+                                    id="name"
+                                    label="Name"
+                                    variant="outlined"
+                                    value={createUserName}
+                                    defaultValue={createUserName}
+                                    onChange={(e) => setCreateUserName(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <TextField
+                                    fullWidth
+                                    id="job"
+                                    label="Job"
+                                    variant="outlined"
+                                    value={createUserJob}
+                                    defaultValue={createUserJob}
+                                    onChange={(e) => setCreateUserJob(e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div class="m-t-30">
+                            <Button onClick={() => setClickCreateModal(false)} data-test="test_modal_create_user_cancel">Cancel</Button>
+                            <Button onClick={() => handleCreateUser(createUser)} data-test="test_modal_create_user_save">Save</Button></div>
                     </Box>
                 </Modal>
             </div>
