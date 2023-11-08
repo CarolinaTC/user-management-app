@@ -223,12 +223,12 @@ function WelcomePage() {
                                                 <EditIcon
                                                     color="primary"
                                                     onClick={() => handleEditUser(user.id)}
-                                                    data-test="test_button_edit_user"
+                                                    data-test={"test_button_edit_user_" + rowID}
                                                 />
                                                 <DeleteIcon
                                                     color="secondary"
                                                     onClick={() => handleOpenModelDeleteUser(user.id)}
-                                                    data-test="test_button_delete_user"
+                                                    data-test={"test_button_delete_user_" + rowID}
                                                 />
                                             </TableCell>
                                         </TableRow>
