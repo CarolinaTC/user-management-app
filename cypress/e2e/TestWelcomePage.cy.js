@@ -1,68 +1,74 @@
-import '../support/commands';
-// TODO: toggle dark / light mode
+import "../support/commands";
+
 let loggedIn = false;
-describe('Welcome Page', () => {
+describe("Welcome Page", () => {
     before(() => {
-        // Log in only once at the beginning of the test 
+        // Log in only once at the beginning of the test
         //cy.login();
         //cy.visit(Cypress.env('baseUrl') + '/welcome');
     });
     beforeEach(() => {
-        cy.login()
-        cy.visit(Cypress.env('baseUrl') + '/welcome');
+        cy.login();
+        cy.visit(Cypress.env("baseUrl") + "/welcome");
         /*   if (!loggedIn) {
-              cy.login();
-              loggedIn = true;
-          }
-          cy.visit(Cypress.env('baseUrl') + '/welcome'); */
-  
+                  cy.login();
+                  loggedIn = true;
+              }
+              cy.visit(Cypress.env('baseUrl') + '/welcome'); */
+    
     });
 
-    it('should display the Welcome Page', () => {
-        cy.contains('Welcome Page').should('be.visible');
+    it("should display the Welcome Page", () => {
+        cy.contains("Welcome Page").should("be.visible");
     });
 
-    it('should toggle dark/light mode', () => {
-
-
+    it("should toggle dark/light mode", () => {
+        cy.get('[data-test="test_toggle_theme"]')
+            .contains("Dark Mode")
+            .should("be.visible")
+            .then(() => {
+                cy.get('[data-test="test_toggle_theme"]').click();
+                cy.get('[data-test="test_header"]').should("have.class", "dark-mode");
+            })
+            .should(() => {
+                /*     cy.get('[data-test="test_toggle_theme"]')
+                        .contains("Light Mode").click(); */
+            });
     });
 
-
-    it('should edit a user', () => {
+    it("should edit a user", () => {
         cy.get('[data-test="test_button_edit_user_0"]').click();
-        cy.get('[data-test="test_header_edit_user"]').should('be.visible');
-        cy.get('input#name').clear().type('John Doe');
+        cy.get('[data-test="test_header_edit_user"]').should("be.visible");
+        cy.get("input#name").clear().type("John Doe");
         cy.get('[data-test="test_modal_save_edit_user"]').click();
-        cy.get('[data-test="test_header_edit_user"]').should('not.exist');
-
+        cy.get('[data-test="test_header_edit_user"]').should("not.exist");
     });
 
-    it('should delete a user', () => {
-        cy.get('[data-test="test_button_delete_user_1"]').click()
-        cy.get('[data-test="test_header_delete_user"]').should('be.visible');
+    it("should delete a user", () => {
+        cy.get('[data-test="test_button_delete_user_1"]').click();
+        cy.get('[data-test="test_header_delete_user"]').should("be.visible");
         cy.get('[data-test="test_modal_delete_user_confirm"]').click();
-        cy.get('[data-test="test_header_delete_user"]').should('not.exist');
+        cy.get('[data-test="test_header_delete_user"]').should("not.exist");
     });
 
-    it('should create a new user', () => {
+    it("should create a new user", () => {
         cy.get('[data-test="test_button_create_user"]').click();
-        cy.get('[data-test="test_header_create_user"]').should('be.visible');
-        cy.get('input#name').type('John Doe');
-        cy.get('input#job').type('dev');
+        cy.get('[data-test="test_header_create_user"]').should("be.visible");
+        cy.get("input#name").type("John Doe");
+        cy.get("input#job").type("dev");
         cy.get('[data-test="test_modal_create_user_save"]').click();
-        cy.get('[data-test="test_header_create_user"]').should('not.exist');
-
+        cy.get('[data-test="test_header_create_user"]').should("not.exist");
     });
-    it('should load additional pages when clicking on the pagination buttons', () => {
-        cy.get('[data-test="test_table_id_0"]').contains("1")
+    it("should load additional pages when clicking on the pagination buttons", () => {
+        cy.get('[data-test="test_table_id_0"]').contains("1");
         // click on next page
-        cy.get(':nth-child(3) > .MuiButtonBase-root').click()
-        cy.get('[data-test="test_table_id_0"]').contains("7")
+        cy.get(":nth-child(3) > .MuiButtonBase-root").click();
+        cy.get('[data-test="test_table_id_0"]').contains("7");
     });
 
-    it('should log out', () => {
-        cy.contains('Logout').click();
-        cy.url().should('include', '/login');
-        cy.contains('Login').should('be.visible');
+    it("should log out", () => {
+        cy.contains("Logout").click();
+        cy.url().should("include", "/login");
+        cy.contains("Login").should("be.visible");
     });
 });
