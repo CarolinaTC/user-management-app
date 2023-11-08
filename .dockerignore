@@ -4,3 +4,6 @@ build
 .gitignore
 README.md
 .env
+.dockerignore
+Dockerfile
+Dockerfile.prod

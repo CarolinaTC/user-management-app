@@ -11,9 +11,6 @@ import Link from "@mui/material/Link";
 import { Brightness4 } from "@mui/icons-material";
 import "../util/general.css";
 
-
-
-
 function Login() {
 
     const darkTheme = createTheme({

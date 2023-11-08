@@ -30,8 +30,6 @@ function SignUp() {
         localStorage.setItem('darkMode', darkMode ? 'light' : 'dark');
     };
 
-
-
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
@@ -53,7 +51,7 @@ function SignUp() {
                 console.log(data.token);
             });
         e.preventDefault();
-        console.log(email);
+
     }
 
     return (
