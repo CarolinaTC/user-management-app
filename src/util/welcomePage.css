@@ -1,12 +1,13 @@
 .welcome-page-container {
-  /*    display: flex;
+  /* display: flex;
     justify-content: flex-end;
-    align-items: flex-start;
-    height: 100vh;  */
+    align-items: flex-start;  */
+  width: 100vw;
+  height: 100vh;
 }
 
 .welcome-content {
-  /*    display: flex;
+  /*   display: flex;
     flex-direction: row;
     align-items: flex-start;  */
 }
@@ -34,9 +35,7 @@
 }
 
 .menu-container {
-  margin-top: 20px;
   margin-bottom: 20px;
-  /*   margin-right: 100px; */
   display: flex;
   justify-content: flex-end;
   cursor: pointer;

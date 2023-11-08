@@ -124,9 +124,9 @@ function SignUp() {
                         If you already have an account, <a href="#" onClick={() => navigate("/login")}>Login</a>
                     </Typography>
 
-                </Container >
+                </Container>
             </div>
-        </ThemeProvider >
+        </ThemeProvider>
     );
 }
 
