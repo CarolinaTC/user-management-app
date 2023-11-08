@@ -6,6 +6,9 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import MenuItem from '@mui/material/MenuItem';
+import Link from "@mui/material/Link";
+import { Brightness4 } from "@mui/icons-material";
 
 
 
@@ -57,8 +60,17 @@ function Login() {
 
     return (
         <ThemeProvider theme={localStorage.getItem('darkMode') == "dark" ? darkTheme : lightTheme}>
-            <Container maxWidth="sm">
-                <div className={`${localStorage.getItem('darkMode') == "dark" ? "dark-mode" : "light-mode"}`}>
+            <div className={`${localStorage.getItem('darkMode') == "dark" ? "dark-mode" : "light-mode"}`}>
+                <Container maxWidth="sm">
+                    <div className="menu-container">
+                        <MenuItem>
+                            <Link color="inherit" onClick={toggleDarkMode}>
+                                <Brightness4 />   {darkMode ? "Light Mode" : "Dark Mode"}
+                            </Link>
+
+                        </MenuItem>
+                    </div>
+
                     <Typography variant="h4" align="center">
                         Login
                     </Typography>
@@ -105,9 +117,10 @@ function Login() {
                             Sign Up
                         </a>
                     </Typography>
-                </div>
-            </Container>
-        </ThemeProvider>
+
+                </Container>
+            </div>
+        </ThemeProvider >
     );
 }
 

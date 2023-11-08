@@ -186,11 +186,12 @@ function WelcomePage() {
                         <TableContainer component={Paper}>
                             <Table>
                                 <TableHead>
-
-                                    <Button variant="outlined" onClick={() => setClickCreateModal(true)} data-test="test_button_create_user">
-                                        <AddIcon color="primary" />
-                                        Create New user
-                                    </Button>
+                                    <div class="m-b-10">
+                                        <Button variant="outlined" onClick={() => setClickCreateModal(true)} data-test="test_button_create_user">
+                                            <AddIcon color="primary" />
+                                            Create New user
+                                        </Button>
+                                    </div>
 
                                     <TableRow>
                                         <TableCell>ID</TableCell>
